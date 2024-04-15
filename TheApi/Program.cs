@@ -1,6 +1,5 @@
-
+using Microsoft.AspNetCore.Http.Metadata;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -70,11 +69,12 @@ app.MapGet("/", (IEnumerable<EndpointDataSource> endpointSources) =>
     .Select(e => new
     {
         e.DisplayName,
+        e.Metadata.OfType<IEndpointDescriptionMetadata>().FirstOrDefault()?.Description,
         Method = e.Metadata.OfType<HttpMethodMetadata>().FirstOrDefault()?.HttpMethods.Aggregate("", (a, b) => string.IsNullOrEmpty(a) ? b : a + ", " + b),
         Pattern = (e as RouteEndpoint)?.RoutePattern.RawText,
         Name = e.Metadata.OfType<EndpointNameMetadata>().FirstOrDefault()?.EndpointName,
     })
-);
+).WithDisplayName("The Help: this").WithDescription("Displays all endpoints available.").WithName("help");
 
 app.MapGet("/{*allOthers}", (string allOthers) =>
 {
