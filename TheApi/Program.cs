@@ -31,6 +31,8 @@ app.UseSession();
 app.MapMethods("/hello/{*name}", ["GET", "POST", "PUT"], async (string? name, HttpContext cx, [FromServices] ILogger<Program> logger, CancellationToken ct) =>
 {
     if (cx.Session.Get("once") == null) cx.Session.Set("once", Encoding.UTF8.GetBytes(true.ToString()));
+    logger.LogInformation("{path}", cx.Request.Path);
+    logger.LogInformation("{method}", cx.Request.Method);
 
     logger.LogInformation("Headers\n\t=======\n\t{headers}", cx.Request.Headers.Aggregate("", (t, h) => t + h.Key + ": '" + h.Value + "'\n\t"));
 

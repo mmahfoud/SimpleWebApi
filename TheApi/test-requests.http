@@ -1,34 +1,34 @@
-@WebApplication1_HostAddress = https://localhost:7232
-GET {{WebApplication1_HostAddress}}/hello
+@base_url = https://localhost:7232
+GET {{base_url}}/hello/D/A/.././././B/../C/../..///hello/./.
 
 ###
-GET {{WebApplication1_HostAddress}}/hello
+GET {{base_url}}/hello
 Content-Type: application/x-www-form-urlencoded
 
 X=1
 ###
-GET {{WebApplication1_HostAddress}}/hello/Param%20Name?name=Query+Name&X=10
+GET {{base_url}}/hello/Param%20Name?name=Query+Name&X=10
 Content-Type: application/x-www-form-urlencoded
 Cookie: secret-session-id=DfDJ8Eo8UaoXyUFHidhMdSJ5iEXmRHeRah5yZ8Q3fULurFWBJf8ZqwkgVqVSxQO52z8dhBvCNPJ01PYcSyRl3soba%2FUUyEy7aE1ioM8nsGLk408CqJGe2CNkUGKOU%2BTr%2BLeFM%2BbGjtO4t51SUCqJ%2BKn4vL%2FqREPsG6SLFj%2BWtNTGa8ro
 
 name=Some Name&X=1
 ###
-POST {{WebApplication1_HostAddress}}/hello
+POST {{base_url}}/hello
 Content-Type: application/x-www-form-urlencoded
 
 somefield=some value
 ###
-PUT {{WebApplication1_HostAddress}}/hello
+PUT {{base_url}}/hello
 Content-Type: application/x-www-form-urlencoded
 
 name=Form Name
 ###
-GET {{WebApplication1_HostAddress}}/hello?name=Query+Name
+GET {{base_url}}/hello?name=Query+Name
 
 ###
-GET {{WebApplication1_HostAddress}}/Add/1005/0e5
+GET {{base_url}}/Add/1005/0e5
 
 ###
-GET {{WebApplication1_HostAddress}}/Add/1500/2500
+GET {{base_url}}/Add/1500/2500
 
 ###

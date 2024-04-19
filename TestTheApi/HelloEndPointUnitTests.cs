@@ -9,7 +9,7 @@ namespace TestTheApi
     {
         private readonly HttpClient client = new() { BaseAddress = new Uri("https://localhost:7232/hello") };
 
-        [Fact]
+        [Fact(DisplayName = "Get Request with no params, no query strings and no form should returen 200 and Hello")]
         public async Task Get_No_Params_Should_Return_200_Hello()
         {
             var request = new HttpRequestMessage
@@ -27,7 +27,7 @@ namespace TestTheApi
             }
         }
 
-        [Fact]
+        [Fact(DisplayName = "Get Request with /SomeValue param no query strings and no form should returen 200 and Hello SomeValue")]
         public async Task Get_With_Param_Should_Return_200_HelloParamValue()
         {
             var request = new HttpRequestMessage
